@@ -36,7 +36,7 @@ pipeline {
       }
     }
     
-    //stage('Deployment') {
+    stage('Deployment') {
       //steps {
         // Create a Docker image and use Ansible to deploy the container
         // For example, build and push the Docker image to a container registry
@@ -46,7 +46,7 @@ pipeline {
         // Use Ansible to deploy the container on an application server
         //bat 'ansible-playbook -i inventory.yml deploy.yml'
       //}
-    //}
+    }
   }
 }
 
