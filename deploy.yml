@@ -1,0 +1,27 @@
+- name: Deploy my-app container
+  hosts: all
+  tasks:
+    - name: Pull the latest image from the container registry
+      docker_image:
+        name: my-registry/my-image:latest
+        state: present
+      
+    - name: Stop the running container
+      docker_container:
+        name: my-app
+        state: stopped
+      ignore_errors: yes
+      
+    - name: Remove the existing container
+      docker_container:
+        name: my-app
+        state: absent
+      ignore_errors: yes
+      
+    - name: Run the new container
+      docker_container:
+        name: my-app
+        image: my-registry/my-image:latest
+        ports:
+          - "8080:8080"
+        restart_policy: always

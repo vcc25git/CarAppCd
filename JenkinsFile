@@ -1,0 +1,53 @@
+pipeline {
+  agent any
+  
+  stages {
+    stage('Version Control') {
+      steps {
+        // Use version control to manage changes to the codebase and collaborate with other developers
+        // For example, checkout the code from the repository
+        git url: 'https://cp18bitbucket@bitbucket.org/msccnc-cicd/cbd_pipeline_carapp.git'
+      }
+    }
+    
+    stage('Build') {
+      steps {
+        // Use a build tool like Maven to package your code into a deployable entity, such as a WAR file
+        // run Maven to build the application
+        bat 'mvn clean install'
+      }
+    }
+    
+    stage('Code Analysis') {
+      steps {
+        // Use Sonarqube or other tools to perform continuous code quality analysis and improve code maintainability
+        // run Sonarqube analysis on the code
+        withSonarQubeEnv('My SonarQube Server') {
+          bat 'mvn sonar:sonar'
+        }
+      }
+    }
+    
+    stage('Testing') {
+      steps {
+        // Develop a test strategy based on the Test Pyramid, utilizing different test levels and tools to ensure a high level of test automation
+        // run JUnit tests
+        bat 'mvn test'
+      }
+    }
+    
+    //stage('Deployment') {
+      //steps {
+        // Create a Docker image and use Ansible to deploy the container
+        // For example, build and push the Docker image to a container registry
+        //bat 'docker build -t carapp-image .'
+        //bat 'docker push my-registry/my-image:latest'
+        
+        // Use Ansible to deploy the container on an application server
+        //bat 'ansible-playbook -i inventory.yml deploy.yml'
+      //}
+    //}
+  }
+}
+
+				
