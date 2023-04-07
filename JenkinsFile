@@ -19,13 +19,13 @@ pipeline {
 		}
 		
 		stage('Code Analysis') {
-			steps {
+			//steps {
 			// Use Sonarqube or other tools to perform continuous code quality analysis and improve code maintainability
 			// run Sonarqube analysis on the code
 			//withSonarQubeEnv('My SonarQube Server') {
 			// bat 'mvn sonar:sonar'
 			//}
-			}
+			//}
 		}
 		
 		stage('Testing') {
@@ -37,7 +37,7 @@ pipeline {
 		}
 		
 		stage('Deployment') {
-			steps {
+			//steps {
 			// Create a Docker image and use Ansible to deploy the container
 			// For example, build and push the Docker image to a container registry
 			//bat 'docker build -t carapp-image .'
@@ -45,7 +45,7 @@ pipeline {
 			
 			// Use Ansible to deploy the container on an application server
 			//bat 'ansible-playbook -i inventory.yml deploy.yml'
-			}
+			//}
 		}
 	}
 }
