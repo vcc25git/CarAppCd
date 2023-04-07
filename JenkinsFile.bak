@@ -22,8 +22,8 @@ pipeline {
       steps {
         // Use Sonarqube or other tools to perform continuous code quality analysis and improve code maintainability
         // run Sonarqube analysis on the code
-        //withSonarQubeEnv('My SonarQube Server') {
-        // bat 'mvn sonar:sonar'
+        withSonarQubeEnv('My SonarQube Server') {
+          bat 'mvn sonar:sonar'
         }
       }
     }
